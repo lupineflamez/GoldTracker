@@ -1,0 +1,7 @@
+services:
+  - type: worker
+    name: gold-tracker
+    env: python
+    plan: free
+    buildCommand: ""
+    startCommand: python agent.py

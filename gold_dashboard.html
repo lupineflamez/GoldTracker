@@ -1,0 +1,52 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Gold Price Dashboard</title>
+        <style>
+            body { font-family: Arial, sans-serif; background: linear-gradient(135deg, #f9f4e8, #f1efe7); margin: 30px; color: #1f2937; }
+            h1 { color: #7a5a13; letter-spacing: 0.04em; margin: 0 0 12px; }
+            .gold-banner {
+                display: inline-block;
+                background: linear-gradient(135deg, #f5d76d, #d4a52d, #f7e7a4);
+                color: #3b2c0a;
+                padding: 8px 14px;
+                border-radius: 999px;
+                font-weight: bold;
+                letter-spacing: 0.08em;
+                margin-bottom: 20px;
+                box-shadow: 0 4px 10px rgba(154, 116, 18, 0.25);
+            }
+            .card { background: rgba(255,255,255,0.9); border-radius: 14px; padding: 24px; box-shadow: 0 8px 25px rgba(98, 76, 14, 0.12); max-width: 980px; border: 1px solid rgba(202, 170, 71, 0.25); }
+            .meta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
+            .badge { display: inline-block; background: #fff9e6; color: #7a5a13; padding: 10px 14px; border-radius: 999px; font-weight: bold; border: 1px solid rgba(183, 137, 27, 0.25); }
+            table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+            th, td { border-bottom: 1px solid #e7dcc0; padding: 12px 10px; text-align: left; }
+            th { background: #f7f2e4; color: #6b4a00; }
+            .muted { color: #7a5a13; font-size: 0.95em; }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <div class="gold-banner">▇▇ Gold Tracker ▇▇</div>
+            <h1>Gold Tracker Dashboard</h1>
+            <div class="meta">
+                <div class="badge">Latest price: $4054.90</div>
+                <div class="badge">Previous price: $4052.70</div>
+                <div class="badge">Change since first reading: $+2154.90</div>
+                <div class="badge">Last price change: $+2.20</div>
+                <div class="badge muted">Last updated: 2026-10-28T23:36:51.473815+00:00</div>
+            </div>
+            <table>
+                <thead>
+                    <tr><th>Timestamp</th><th>Price</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>2026-10-27T00:00:00+00:00</td><td>$1900.00</td></tr><tr><td>2026-10-27T12:00:00+00:00</td><td>$1950.00</td></tr><tr><td>2026-10-27T18:00:00+00:00</td><td>$1980.00</td></tr><tr><td>2026-10-28T23:28:43.186416+00:00</td><td>$4052.70</td></tr><tr><td>2026-10-28T23:36:51.473815+00:00</td><td>$4054.90</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+    </html>
+    

@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# Project state and secret config
+key.env
+.env
+.env.*
+*.env
+gold_state.json
+gold_history.json
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Local runtime artifacts
+*.log
