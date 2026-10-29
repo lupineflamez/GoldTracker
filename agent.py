@@ -4,11 +4,13 @@ import json
 import os
 import smtplib
 import ssl
+import threading
 import time
 import urllib.error
 import urllib.parse
 import urllib.request
 from email.message import EmailMessage
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 
@@ -479,8 +481,38 @@ def run_check() -> None:
     send_daily_summary_if_needed()
 
 
+def start_web_server() -> None:
+    class DashboardHandler(BaseHTTPRequestHandler):
+        def do_GET(self) -> None:
+            path = urllib.parse.urlsplit(self.path).path
+            if path == "/healthz":
+                response = b"ok"
+                content_type = "text/plain; charset=utf-8"
+            elif path == "/":
+                if DASHBOARD_FILE.exists():
+                    response = DASHBOARD_FILE.read_bytes()
+                else:
+                    response = b"<html><body><h1>Gold Tracker</h1><p>Dashboard is waiting for its first price update.</p></body></html>"
+                content_type = "text/html; charset=utf-8"
+            else:
+                self.send_error(404)
+                return
+
+            self.send_response(200)
+            self.send_header("Content-Type", content_type)
+            self.send_header("Content-Length", str(len(response)))
+            self.end_headers()
+            self.wfile.write(response)
+
+    port = int(os.environ.get("PORT", "10000"))
+    server = ThreadingHTTPServer(("0.0.0.0", port), DashboardHandler)
+    threading.Thread(target=server.serve_forever, daemon=True).start()
+    print(f"Dashboard server listening on port {port}.")
+
+
 def main() -> None:
     load_dotenv.load(dotenv_path="key.env")
+    start_web_server()
     print("Gold tracker started. Checking every 30 minutes.")
 
     try:
